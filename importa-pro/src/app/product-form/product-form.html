@@ -1,0 +1,9 @@
+<div class="product-form-container">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <input formControlName="name" placeholder="Nombre del producto" />
+    <input formControlName="aliExpressPrice" type="number" placeholder="Precio AliExpress" />
+    <input formControlName="shipping" type="number" placeholder="Envío" />
+    <input formControlName="seller" placeholder="Vendedor" />
+    <button type="submit">Agregar producto</button>
+  </form>
+</div>

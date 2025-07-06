@@ -1,0 +1,40 @@
+<div class="welcome-container">
+  <header class="header">
+    <h1 class="title">🚀 ImportaPro</h1>
+    <p class="subtitle">Tu plataforma para aprender Angular mientras importas productos</p>
+  </header>
+
+  <main class="main-content">
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>📦 Importar Productos</h3>
+        <p>Importa productos desde AliExpress automáticamente</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>💰 Calcular Costos</h3>
+        <p>Calcula costos, impuestos y comisiones de importación</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>📊 Análisis de Rentabilidad</h3>
+        <p>Analiza ganancias y márgenes de tus productos</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>🛒 Publicar Productos</h3>
+        <p>Publica en Mercado Libre e Instagram</p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <button class="cta-button" (click)="startLearning()">
+        🎓 Comenzar a Aprender Angular
+      </button>
+    </div>
+  </main>
+
+  <app-product-form (addProduct)="onAddProduct($event)"></app-product-form>
+
+  <app-product-table [products]="products"></app-product-table>
+</div>
