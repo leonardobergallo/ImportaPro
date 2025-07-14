@@ -1,0 +1,61 @@
+<div class="product-table-container">
+  <h2>📊 Tabla de Productos - ImportaPro</h2>
+
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio AliExpress (USD)</th>
+        <th>Envío (USD)</th>
+        <th>Vendedor</th>
+        <th>Costo Total Maxi</th>
+        <th>Costo ARS</th>
+        <th>Precio Venta ARS</th>
+        <th>Comisión ML</th>
+        <th>Comisión MP</th>
+        <th>Precio Final ARS</th>
+        <th>Ganancia ARS</th>
+        <th>Cumple Ganancia</th>
+        <th>Categoría</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 🔄 *ngFor - Es como map() en React -->
+      <tr *ngFor="let product of products; let i = index"
+          [class.profitable]="product.meetsMinProfit"
+          [class.unprofitable]="!product.meetsMinProfit">
+        <td>{{ product.name }}</td>
+        <td>${{ product.aliExpressPrice }}</td>
+        <td>${{ product.shipping }}</td>
+        <td>{{ product.seller }}</td>
+        <td>${{ product.totalCostUSD ?? 0 }}</td>
+        <td>${{ (product.totalCostARS ?? 0) | number:'1.0-0' }}</td>
+        <td>${{ (product.salePriceARS ?? 0) | number:'1.0-0' }}</td>
+        <td>${{ (product.mlCommission ?? 0) | number:'1.0-0' }}</td>
+        <td>${{ (product.mpCommission ?? 0) | number:'1.0-0' }}</td>
+        <td>${{ (product.finalPriceARS ?? 0) | number:'1.0-0' }}</td>
+        <td [class.positive]="(product.profitARS ?? 0) > 0"
+            [class.negative]="(product.profitARS ?? 0) < 0">
+          ${{ (product.profitARS ?? 0) | number:'1.0-0' }}
+        </td>
+        <td>
+          <span [class]="product.meetsMinProfit ? 'badge-success' : 'badge-danger'">
+            {{ product.meetsMinProfit ? '✅ SÍ' : '❌ NO' }}
+          </span>
+        </td>
+        <td>{{ product.category }}</td>
+        <td>
+          <button (click)="editProduct(i)" class="btn-edit">✏️ Editar</button>
+          <button (click)="removeProduct(i)" class="btn-delete">🗑️ Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="summary">
+    <p>📈 Total de productos: {{ getTotalProducts() }}</p>
+    <p>✅ Productos rentables: {{ getProfitableProducts() }}</p>
+    <p>❌ Productos no rentables: {{ getUnprofitableProducts() }}</p>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+/*
+============================================
+Estilos para menú lateral vertical SPA
+============================================
+- .layout-container: layout principal con sidebar y contenido
+- .sidebar: barra lateral vertical
+- .sidebar a: links del menú
+- .sidebar a.active: link activo resaltado
+- .main-content: área principal de la vista
+============================================
+*/
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f6f8fa;
+}
+
+.sidebar {
+  width: 220px;
+  background: linear-gradient(180deg, #2d3a4b 0%, #3e4c5e 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0 0 0;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  border-left: 4px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+  margin-bottom: 4px;
+}
+
+.sidebar a:hover {
+  background: #42516a;
+  border-left: 4px solid #4fd1c5;
+}
+
+.sidebar a.active {
+  background: #4fd1c5;
+  color: #222;
+  font-weight: bold;
+  border-left: 4px solid #222;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px 32px;
+  background: #f6f8fa;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 700px) {
+  .layout-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+    box-shadow: none;
+    background: #2d3a4b;
+  }
+  .sidebar a {
+    flex: 1;
+    text-align: center;
+    padding: 14px 0;
+    font-size: 1rem;
+    border-left: none;
+    border-bottom: 4px solid transparent;
+  }
+  .sidebar a.active {
+    border-left: none;
+    border-bottom: 4px solid #222;
+  }
+  .main-content {
+    padding: 20px 8px;
+  }
+}

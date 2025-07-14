@@ -1,0 +1,104 @@
+<div class="stats-container">
+  <h2 class="stats-title">📊 Estadísticas en Tiempo Real</h2>
+  
+  <!-- 📈 Tarjetas principales -->
+  <div class="stats-grid">
+    <!-- Total de productos -->
+    <div class="stat-card">
+      <div class="stat-icon">📦</div>
+      <div class="stat-content">
+        <h3 class="stat-value">{{ totalProducts() }}</h3>
+        <p class="stat-label">Total Productos</p>
+      </div>
+    </div>
+
+    <!-- Productos rentables -->
+    <div class="stat-card profitable">
+      <div class="stat-icon">✅</div>
+      <div class="stat-content">
+        <h3 class="stat-value">{{ profitableProducts() }}</h3>
+        <p class="stat-label">Rentables</p>
+      </div>
+    </div>
+
+    <!-- Productos no rentables -->
+    <div class="stat-card unprofitable">
+      <div class="stat-icon">❌</div>
+      <div class="stat-content">
+        <h3 class="stat-value">{{ unprofitableProducts() }}</h3>
+        <p class="stat-label">No Rentables</p>
+      </div>
+    </div>
+
+    <!-- Porcentaje de rentabilidad -->
+    <div class="stat-card" [ngClass]="getProfitabilityClass(profitabilityPercentage())">
+      <div class="stat-icon">📈</div>
+      <div class="stat-content">
+        <h3 class="stat-value">{{ formatPercentage(profitabilityPercentage()) }}</h3>
+        <p class="stat-label">Rentabilidad</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 💰 Información financiera -->
+  <div class="financial-section">
+    <h3 class="section-title">💰 Información Financiera</h3>
+    
+    <div class="financial-grid">
+      <!-- Ganancia total -->
+      <div class="financial-card">
+        <h4 class="financial-label">Ganancia Total</h4>
+        <p class="financial-value" [ngClass]="{'positive': totalProfit() > 0, 'negative': totalProfit() < 0}">
+          {{ formatCurrency(totalProfit()) }}
+        </p>
+      </div>
+
+      <!-- Costo total -->
+      <div class="financial-card">
+        <h4 class="financial-label">Costo Total</h4>
+        <p class="financial-value">{{ formatCurrency(totalCost()) }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🏆 Productos destacados -->
+  <div class="highlights-section">
+    <h3 class="section-title">🏆 Productos Destacados</h3>
+    
+    <div class="highlights-grid">
+      <!-- Producto más rentable -->
+      <div class="highlight-card best" *ngIf="mostProfitableProduct()">
+        <h4 class="highlight-title">🥇 Más Rentable</h4>
+        <p class="product-name">{{ mostProfitableProduct()?.name }}</p>
+        <p class="profit-amount positive">
+          {{ formatCurrency(mostProfitableProduct()?.profitARS || 0) }}
+        </p>
+      </div>
+
+      <!-- Producto menos rentable -->
+      <div class="highlight-card worst" *ngIf="leastProfitableProduct()">
+        <h4 class="highlight-title">🥉 Menos Rentable</h4>
+        <p class="product-name">{{ leastProfitableProduct()?.name }}</p>
+        <p class="profit-amount negative">
+          {{ formatCurrency(leastProfitableProduct()?.profitARS || 0) }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 📊 Gráfico de distribución -->
+  <div class="distribution-section" *ngIf="totalProducts() > 0">
+    <h3 class="section-title">📊 Distribución</h3>
+    
+    <div class="distribution-bar">
+      <div class="bar-segment profitable" 
+           [style.width.%]="(profitableProducts() / totalProducts()) * 100">
+        <span class="segment-label">{{ profitableProducts() }} Rentables</span>
+      </div>
+      <div class="bar-segment unprofitable" 
+           [style.width.%]="(unprofitableProducts() / totalProducts()) * 100">
+        <span class="segment-label">{{ unprofitableProducts() }} No Rentables</span>
+      </div>
+    </div>
+  </div>
+</div> 
