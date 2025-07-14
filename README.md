@@ -1,59 +1,104 @@
-# ImportaPro
+# ImportaPro 🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+**Aplicación Angular para gestión de productos de importación con cálculo de rentabilidad**
 
-## Development server
+## 📋 Descripción
 
-To start a local development server, run:
+ImportaPro es una aplicación web desarrollada en Angular que permite gestionar productos de importación, calcular costos, impuestos, comisiones y determinar la rentabilidad de cada producto.
 
+## ✨ Características
+
+- 📝 **Formulario de productos**: Agregar y editar productos con todos sus datos
+- 📊 **Tabla de productos**: Visualizar todos los productos con cálculos automáticos
+- 📈 **Estadísticas en tiempo real**: Métricas de rentabilidad y análisis financiero
+- 🧮 **Calculadora automática**: Cálculo de impuestos, comisiones y ganancias
+- 🏷️ **Sistema de markup**: Calcular precios de venta con porcentaje de ganancia
+- 🚪 **Régimen Puerta a Puerta**: Manejo especial de impuestos para envíos personales
+
+## 🛠️ Tecnologías
+
+- **Angular 20** - Framework principal
+- **TypeScript** - Tipado estático
+- **Angular Signals** - Estado reactivo
+- **Angular Router** - Navegación SPA
+- **Reactive Forms** - Formularios reactivos
+- **SCSS** - Estilos avanzados
+
+## 🚀 Instalación y Uso
+
+### Prerrequisitos
+- Node.js (versión 18 o superior)
+- npm o yarn
+
+### Instalación
 ```bash
-ng serve
+# Clonar el repositorio
+git clone https://github.com/leonardobergallo/ImportaPro.git
+
+# Entrar al directorio
+cd ImportaPro
+
+# Instalar dependencias
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+### Desarrollo
 ```bash
-ng generate component component-name
+# Iniciar servidor de desarrollo
+npm start
+
+# Abrir en el navegador
+# http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+### Build de producción
 ```bash
-ng generate --help
+# Construir para producción
+npm run build
 ```
 
-## Building
+## 📁 Estructura del Proyecto
 
-To build the project run:
-
-```bash
-ng build
+```
+src/
+├── app/
+│   ├── product-form/          # Formulario de productos
+│   ├── product-table/         # Tabla de productos
+│   ├── stats/                 # Estadísticas
+│   ├── contacto/              # Página de contacto
+│   ├── product-calculator.ts  # Lógica de cálculo
+│   ├── product-store.service.ts # Estado global
+│   └── edit-product.service.ts # Servicio de edición
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🎯 Funcionalidades Principales
 
-## Running unit tests
+### Gestión de Productos
+- Agregar productos con precio AliExpress y envío
+- Editar productos existentes
+- Eliminar productos
+- Cálculo automático de costos totales
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Cálculos Automáticos
+- Conversión USD a ARS
+- Impuestos (IVA, PAIS, AFIP, BBPP)
+- Comisiones de MercadoLibre y MercadoPago
+- Ganancia neta y rentabilidad
 
-```bash
-ng test
-```
+### Régimen Puerta a Puerta
+- Manejo especial para envíos personales
+- Límite de USD 50 sin impuestos
+- 50% de impuesto sobre el excedente
 
-## Running end-to-end tests
+## 🌐 Demo
 
-For end-to-end (e2e) testing, run:
+**Aplicación en vivo**: [importa-pro.vercel.app](https://importa-pro.vercel.app)
 
-```bash
-ng e2e
-```
+## 📝 Licencia
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Este proyecto está bajo la Licencia MIT.
 
-## Additional Resources
+## 👨‍💻 Autor
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Leonardo Bergallo**
+- GitHub: [@leonardobergallo](https://github.com/leonardobergallo)
