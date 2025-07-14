@@ -1,0 +1,24 @@
+<div class="product-form-container">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <input formControlName="name" placeholder="Nombre del producto" />
+    <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="error-message">
+      El nombre es obligatorio.
+    </div>
+
+    <input formControlName="aliExpressPrice" type="number" placeholder="Precio AliExpress" />
+    <input formControlName="shipping" type="number" placeholder="Envío" />
+    <input formControlName="seller" placeholder="Vendedor" />
+    <input formControlName="category" placeholder="Categoría" />
+
+    <input formControlName="markup" type="number" min="0" max="100" placeholder="% de ganancia (markup, opcional)" />
+
+    <input formControlName="salePriceARS" type="number" placeholder="Precio de venta (opcional)" [disabled]="productForm.get('markup')?.value" />
+
+    <label style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
+      <input type="checkbox" formControlName="puertaAPuerta" />
+      Régimen Puerta a Puerta (3 compras/año, hasta USD 50 sin impuestos, luego 50% sobre el excedente)
+    </label>
+
+    <button type="submit" [disabled]="productForm.invalid">Agregar producto</button>
+  </form>
+</div>

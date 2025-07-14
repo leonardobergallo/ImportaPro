@@ -1,0 +1,23 @@
+<!--
+============================================
+Menú de navegación vertical SPA con Angular Router
+============================================
+- Usa routerLink para navegar entre vistas sin recargar la página.
+- routerLinkActive="active" resalta el link de la vista actual.
+- El menú es una barra lateral vertical.
+-->
+<div class="layout-container">
+  <nav class="sidebar">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Formulario</a>
+    <a routerLink="/productos" routerLinkActive="active">Productos</a>
+    <a routerLink="/estadisticas" routerLinkActive="active">Estadísticas</a>
+    <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
+  </nav>
+
+  <!--
+  <router-outlet> muestra el componente correspondiente a la ruta actual.
+  -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

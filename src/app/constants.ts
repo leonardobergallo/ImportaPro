@@ -1,0 +1,9 @@
+export const DOLAR_ESTIMADO = 1400;
+export const COMISION_ML = 0.13; // 13%
+export const COMISION_MP = 0.07; // 7%
+export const GANANCIA_MINIMA = 4000;
+export const COSTO_CORREO = 3000;
+export const IVA = 0.21;
+export const PAIS = 0.30;
+export const AFIP = 0.45;
+export const BBPP = 0.25; 
